@@ -70,6 +70,9 @@ def visualize_model(model, embedding, vocab):
     final_weights = model.get_weights(embedding)
     tsne = TSNE(perplexity=30, n_components=2, init='pca', n_iter=5000)
     load_weights = tsne.fit_transform(final_weights)
+    # Save the PCA results to file
+    with open("model/load_weights.npy", 'wb') as outfile:
+        np.save(outfile, load_weights)
 
     # Control the number of labelled subreddits to display
     sparse_labels = [lbl if random.random() <= 0.01 else '' for lbl in vocab]
@@ -109,7 +112,7 @@ def freeze_graph(model):
     '''Saves the model for usage in applications.'''
 
     # We specify the file fullname of our freezed graph
-    output_graph = "frozen_model.pb"
+    output_graph = "model/frozen_model.pb"
 
     # Before exporting our graph, we need to precise what is our output node
     # This is how TF decides what part of the Graph he has to keep and what part it can dump
@@ -142,7 +145,7 @@ def freeze_graph(model):
 def load_data():
     '''Loads the cleaned data into a Pandas dataframe.'''
 
-    with open("final_data.csv", 'r') as csv_in:
+    with open("dataset/final_data.csv", 'r') as csv_in:
         csv_in = csv.reader(csv_in, delimiter='\t')
         data = pd.DataFrame(columns=['seq_length', 'sub_label', 'sub_seqs'])
         row_count = 0
@@ -168,7 +171,7 @@ tf.logging.set_verbosity(tf.logging.FATAL)
 if __name__ == '__main__':
     # Load cleaned data into memory
     DATA = load_data()
-    with open("vocab.dat", 'rb') as infile:
+    with open("model/vocab.dat", 'rb') as infile:
         VOCAB = pickle.load(infile)
 
     # Begin training process

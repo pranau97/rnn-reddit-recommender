@@ -44,7 +44,7 @@ def scrape_data(n_scrape_loops=10):
         except Exception as e:
             print(e)
 
-    with open('raw_data.dat', 'wb') as outfile:
+    with open('dataset/raw_data.dat', 'wb') as outfile:
         pickle.dump(reddit_data, outfile)
 
     return reddit_data
@@ -167,9 +167,9 @@ def process_data(raw_data):
 
 if __name__ == '__main__':
     # Check if data has already been scraped
-    DATA = Path("raw_data.dat")
+    DATA = Path("dataset/raw_data.dat")
     if DATA.is_file():
-        with open('raw_data.dat', 'rb') as infile:
+        with open('dataset/raw_data.dat', 'rb') as infile:
             DATA = pickle.load(infile)
     else:
         DATA = scrape_data(10)
