@@ -7,8 +7,5 @@ __pycache__/
 # Useless models
 .useless_models/
 
-# Procfile
-Procfile
-
 # PRAW Config
 secrets.ini
