@@ -145,7 +145,7 @@ def freeze_graph(model):
 def load_data():
     '''Loads the cleaned data into a Pandas dataframe.'''
 
-    with open("dataset/final_data.csv", 'r') as csv_in:
+    with open("data/final_data.csv", 'r') as csv_in:
         csv_in = csv.reader(csv_in, delimiter='\t')
         data = pd.DataFrame(columns=['seq_length', 'sub_label', 'sub_seqs'])
         row_count = 0
