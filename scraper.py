@@ -44,7 +44,7 @@ def scrape_data(n_scrape_loops=10):
         except Exception as e:
             print(e)
 
-    with open('dataset/raw_data.dat', 'wb') as outfile:
+    with open('data/raw_data.dat', 'wb') as outfile:
         pickle.dump(reddit_data, outfile)
 
     return reddit_data
@@ -149,7 +149,7 @@ def process_data(raw_data):
     # Force probability sum to 1 by adding differenc to "Unseen-sub" probability
     vocab_probs = [1 - sum(tmp_vocab_probs)] + tmp_vocab_probs
     print("Vocab size = " + str(len(vocab)))
-    with open("vocab.dat", 'wb') as outfile:
+    with open("model/vocab.dat", 'wb') as outfile:
         pickle.dump(vocab, outfile)
 
     pp_user_data = remove_repeating_subs(raw_data)
@@ -162,14 +162,14 @@ def process_data(raw_data):
                              'seq_length': lengths})
     print(train_df.head())
 
-    train_df.to_csv('final_data.csv', sep='\t', encoding='utf-8')
+    train_df.to_csv('data/final_data.csv', sep='\t', encoding='utf-8')
 
 
 if __name__ == '__main__':
     # Check if data has already been scraped
-    DATA = Path("dataset/raw_data.dat")
+    DATA = Path("data/raw_data.dat")
     if DATA.is_file():
-        with open('dataset/raw_data.dat', 'rb') as infile:
+        with open('data/raw_data.dat', 'rb') as infile:
             DATA = pickle.load(infile)
     else:
         DATA = scrape_data(10)
