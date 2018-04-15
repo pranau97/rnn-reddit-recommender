@@ -135,4 +135,5 @@ if __name__ == '__main__':
     REC = Recommender()
     print("Enter username: ")
     USER = input()
-    REC.user_recs(USER)
+    RECS = REC.user_recs(USER)
+    print(RECS)
