@@ -24,7 +24,7 @@ protobuf==3.5.2.post1
 prawcore==0.14.0
 praw==5.4.0
 pip==9.0.3
-Pillow==5.1.0
+Pillow==6.2.0
 pep8==1.7.1
 pandas==0.22.0
 packaging==17.1
