@@ -1,7 +1,7 @@
 wrapt==1.10.11
 wheel==0.31.0
 Werkzeug==0.14.1
-urllib3==1.22
+urllib3==1.26.5
 update-checker==0.16
 tornado==5.0.1
 tflearn==0.3.2
