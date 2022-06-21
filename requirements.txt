@@ -28,7 +28,7 @@ Pillow==5.1.0
 pep8==1.7.1
 pandas==0.22.0
 packaging==17.1
-numpy==1.14.2
+numpy==1.22.0
 mccabe==0.6.1
 MarkupSafe==1.0
 Markdown==2.6.11
