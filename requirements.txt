@@ -38,7 +38,7 @@ Jinja2==2.10
 itsdangerous==0.24
 isort==4.3.4
 idna==2.6
-html5lib==0.9999999
+html5lib==0.999999999
 h5py==2.7.1
 grpcio==1.10.0
 graphviz==0.8.2
